@@ -8,7 +8,7 @@ public class Animal {
     private String type;
 
     public Animal() {
-        System.out.println("Animal的构造方法");
+
     }
 
     public String getType() {
@@ -19,4 +19,21 @@ public class Animal {
         this.type = type;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!this.type.equals(((Animal)obj).type)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash = 31 * hash + (type == null ? 0 : type.hashCode());
+        return hash;
+    }
 }

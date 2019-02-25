@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Cain
  * @Description
  * @date 2018/10/27
  */

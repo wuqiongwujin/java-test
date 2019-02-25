@@ -1,4 +1,4 @@
-package classTest;
+package classLoaderTest;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,10 +6,10 @@ import java.io.InputStream;
 /**
  * @author Cain
  * @Description
- * @date 2018/11/4
+ * @date 2019/1/1
  */
-public class ClassTest {
-    public static void main(String[] args) throws Exception {
+public class ClassLoaderTest {
+    public static void main(java.lang.String[] args) throws Exception {
         ClassLoader myLoader = new ClassLoader() {
             @Override
             public Class<?> loadClass(java.lang.String name) throws ClassNotFoundException {
@@ -28,7 +28,9 @@ public class ClassTest {
                 }
             }
         };
-        Object obj = myLoader.loadClass("java.lang.MyString").newInstance();
+        Object obj = myLoader.loadClass("java.lang.String").newInstance();
         System.out.println(obj.getClass());
+//        obj.setVar("myString");
     }
 }
+
