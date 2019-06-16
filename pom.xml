@@ -54,22 +54,11 @@
             <version>2.6.2</version>
         </dependency>
 
-        <!--湖畔hopi接口依赖-->
         <dependency>
-            <groupId>com.hupun.hopi</groupId>
-            <artifactId>hopi-request</artifactId>
-            <version>0.3.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hupun.erp.api</groupId>
-            <artifactId>erp-open-api-dev1</artifactId>
-            <version>0.0.4-SNAPSHOT</version>
+            <groupId>com.google.collections</groupId>
+            <artifactId>google-collections</artifactId>
+            <version>1.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.dommons.io</groupId>
-            <artifactId>dommons-io</artifactId>
-            <version>0.4.7-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 </project>

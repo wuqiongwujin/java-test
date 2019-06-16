@@ -8,5 +8,15 @@ package dynamicProxyTest.dynamicProxyTest1;
  */
 public interface DevelopWorker {
 
-    void develop();
+    /**
+     * develop
+     * @return
+     */
+    String develop();
+
+    /**
+     * play
+     * @return
+     */
+    String play();
 }

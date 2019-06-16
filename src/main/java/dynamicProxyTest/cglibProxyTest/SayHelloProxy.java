@@ -24,6 +24,7 @@ public class SayHelloProxy implements MethodInterceptor {
         return enhancer.create();
     }
 
+    @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         return methodProxy.invokeSuper(o, objects);
     }

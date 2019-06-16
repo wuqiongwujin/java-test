@@ -16,6 +16,7 @@ public class DynamicProxyTest {
         DevelopWorker developWorker = (DevelopWorker) Proxy.newProxyInstance(DevelopWorker.class.getClassLoader(),
                 new Class[] {DevelopWorker.class}, new DevelopWorkerHandler(javaDevelop));
 
-        developWorker.develop();
+        System.out.println(developWorker.develop());
+        System.out.println(developWorker.play());
     }
 }

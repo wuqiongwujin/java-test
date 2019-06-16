@@ -7,7 +7,14 @@ package dynamicProxyTest.dynamicProxyTest1;
  * @date 2018/8/10
  */
 public class JavaDevelop implements DevelopWorker {
-    public void develop() {
-        System.out.println("java develop");
+
+    @Override
+    public String develop() {
+        return "java develop";
+    }
+
+    @Override
+    public String play() {
+        return "play";
     }
 }

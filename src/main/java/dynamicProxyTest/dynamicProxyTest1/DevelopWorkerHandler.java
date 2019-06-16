@@ -18,7 +18,11 @@ public class DevelopWorkerHandler implements InvocationHandler {
         this.target = target;
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        if (method.getName().equals("develop")) {
+            return "I am " + method.invoke(target, args);
+        }
         return method.invoke(target, args);
     }
 }
