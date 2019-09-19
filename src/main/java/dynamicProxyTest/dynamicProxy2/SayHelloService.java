@@ -8,7 +8,10 @@ package dynamicProxyTest.dynamicProxy2;
  */
 public class SayHelloService implements SayHelloInterface {
 
+    private int a = 1;
+
     public String sayHello(String str) {
+        System.out.println(a);
         return str;
     }
 }

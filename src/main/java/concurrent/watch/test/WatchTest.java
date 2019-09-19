@@ -10,11 +10,15 @@ public class WatchTest {
     public static void main(String[] args) throws InterruptedException {
         StopWatch stopWatch = new StopWatch("消费者耗时");
         stopWatch.start("任务1");
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         stopWatch.stop();
+        System.out.println(stopWatch.getLastTaskTimeMillis());
         stopWatch.start("任务2");
         Thread.sleep(2000);
-        stopWatch.stop();
+        if (stopWatch.isRunning()) {
+            stopWatch.stop();
+        }
+        System.out.println(stopWatch.getLastTaskTimeMillis());
         System.out.println(stopWatch.prettyPrint());
     }
 }

@@ -16,10 +16,12 @@ public class SayHelloProxy implements InvocationHandler {
 
     public Object bind(Object target){
         this.target = target;
+        //动态生成代理对象，该对象持有SayHelloProxy对象
         return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        return "ok";
+        //使用反射调用指定的target对象的某个方法
+        return method.invoke(target, args);
     }
 }

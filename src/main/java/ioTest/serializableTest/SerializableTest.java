@@ -13,16 +13,16 @@ public class SerializableTest {
     public static void main(String[] args) {
 //        Student student = new Student();
 //        student.setName("无穷");
-//        student.setAge(26);
+//        student.setAge(25);
 //        student.setAddress("亚港");
 //        student.setHeight("168");
-////        serializeStudent(student);
-////        student.setAddress("潢川");
-////        serializeStudent(student);
-//        deserializeStudent();
+        //serializeStudent(student);
+        //student.setAddress("潢川");
+        //serializeStudent(student);
+        //deserializeStudent();
         Pupil pupil = new Pupil();
-        pupil.setGrade("1");
-//        serializeStudent(pupil);
+        pupil.setGrade("2");
+        serializeStudent(pupil);
         deserializePupil();
     }
 
@@ -105,9 +105,8 @@ class Student implements Serializable {
 
 }
 
-class Pupil extends Student implements Serializable {
+class Pupil extends Student {
 
-    private static final long serialVersionUID = 8475207421244175708L;
     private String grade;
     private String school;
 

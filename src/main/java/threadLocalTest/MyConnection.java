@@ -11,6 +11,10 @@ public class MyConnection extends Thread{
     private static ThreadLocal<String> shared1 = new ThreadLocal<String>();
     private static ThreadLocal<String> shared2 = new ThreadLocal<String>();
 
+    static {
+        shared1.set("connection");
+    }
+
     public MyConnection(){
 
     }
