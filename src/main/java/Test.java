@@ -9,7 +9,5 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        Date date = new Date(1893427200000L);
-        System.out.println(SimpleDateFormat.getInstance().format(date));
     }
 }
