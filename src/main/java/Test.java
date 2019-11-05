@@ -9,5 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Test {
 
     public static void main(String[] args) throws Exception {
+        BigDecimal price = new BigDecimal("26");
+        BigDecimal num = new BigDecimal("1.908");
+        System.out.println(price.multiply(num).divide(num, 5));
     }
 }
