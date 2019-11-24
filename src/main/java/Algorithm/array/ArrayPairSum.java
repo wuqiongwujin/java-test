@@ -1,18 +1,26 @@
-package Algorithm.QuicklySort;
-
-import java.util.Arrays;
+package Algorithm.array;
 
 /**
- * @author Cain
- * @Package Algorithm.QuicklySort
  * @Description
- * @date 2018/8/10
+ * @date 2019/11/19
  */
-public class QuicklySortTest {
+public class ArrayPairSum {
 
-    private static int[] array = {2,9,5,7,1,3,4,8,0,6,11,25,13,17};
+    public int arrayPairSum(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        sort(nums, 0, nums.length - 1);
+        int firstIndex = 0;
+        int sendIndex = firstIndex + 1;
+        int sum = 0;
+        for (;firstIndex <= nums.length - 2; firstIndex=sendIndex+1,sendIndex=firstIndex+1) {
+            sum += Math.min(nums[firstIndex], nums[sendIndex]);
+        }
+        return sum;
+    }
 
-    public static void sort(int[] array, int i, int j){
+    private void sort(int[] array, int i, int j) {
         if(i >= j){
             return;
         }
@@ -48,7 +56,8 @@ public class QuicklySortTest {
     }
 
     public static void main(String[] args) {
-        sort(array, 0, array.length-1);
-        System.out.println(Arrays.toString(array));
+        int[] nums = new int[]{1,4,3,2};
+        ArrayPairSum s = new ArrayPairSum();
+        System.out.println(s.arrayPairSum(nums));
     }
 }
