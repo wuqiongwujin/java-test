@@ -26,6 +26,7 @@ public class SayHelloProxy implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+        SayHelloService.threadLocal.set("datasource:"+(String) objects[0]);
         return methodProxy.invokeSuper(o, objects);
     }
 }

@@ -72,5 +72,30 @@
             <artifactId>cglib</artifactId>
             <version>3.2.0</version>
         </dependency>
+
+        <!-- excel解析工具 -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <!-- excel解析工具 -->
+        <dependency>
+            <groupId>com.rackspace.apache</groupId>
+            <artifactId>xerces2-xsd11</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+        <!-- excel解析工具 -->
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>1.4.01</version>
+        </dependency>
+        <!-- csv表格解析工具 -->
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.3</version>
+        </dependency>
     </dependencies>
 </project>

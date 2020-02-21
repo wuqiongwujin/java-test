@@ -7,7 +7,10 @@ package dynamicProxyTest.cglibProxyTest;
  * @date 2018/9/1
  */
 public class SayHelloService {
-    public void sayHello(){
-        System.out.println("Hello");
+
+    static ThreadLocal<String> threadLocal = new ThreadLocal<>();
+
+    public void sayHello(String id){
+        System.out.println(threadLocal.get());
     }
 }

@@ -8,6 +8,15 @@ public class Circular {
 
     private int x;
     private int y;
+    private boolean b;
+
+    public boolean isB() {
+        return b;
+    }
+
+    public void setB(boolean b) {
+        this.b = b;
+    }
 
     public int getX() {
         return x;

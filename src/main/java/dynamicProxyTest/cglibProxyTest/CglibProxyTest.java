@@ -11,6 +11,6 @@ public class CglibProxyTest {
         SayHelloService sayHelloService = new SayHelloService();
         SayHelloProxy sayHelloProxy = new SayHelloProxy();
         SayHelloService sayHelloService1 = (SayHelloService) sayHelloProxy.getInstance(sayHelloService);
-        sayHelloService1.sayHello();
+        sayHelloService1.sayHello("123");
     }
 }

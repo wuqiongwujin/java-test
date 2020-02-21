@@ -1,27 +1,24 @@
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
+/**
+ * @Description
+ * @Author Cain
+ * @date 2020/2/17
+ */
 public class Test {
 
-    public static void main(String[] args) throws Exception {
-        test2();
-    }
-
-    public static void test2() throws RuntimeException{
-        try {
-            test();
-            System.out.println("1");
-        } catch (RuntimeException e) {
-            throw e;
+    public static void main(String[] args) {
+        Map<String,String> map = new HashMap<>();
+        map.put("1","1");
+        map.put("2","2");
+        for (Iterator<Map.Entry<String,String>> it = map.entrySet().iterator(); it.hasNext(); ){
+            Map.Entry<String,String> entry = it.next();
+            String key = entry.getKey();
+            String value = entry.getValue();
+            it.remove();
         }
-    }
 
-    public static void test() throws RuntimeException {
-        throw new RuntimeException("test");
     }
 }
