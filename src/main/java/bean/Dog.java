@@ -1,3 +1,5 @@
+package bean;
+
 /**
  * @author Cain
  * @Package PACKAGE_NAME

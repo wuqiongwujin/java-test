@@ -4,7 +4,7 @@ package reflectTest;
  * @Description
  * @date 2019/9/20
  */
-public class Circular {
+public class Circular extends Graphical{
 
     private int x;
     private int y;

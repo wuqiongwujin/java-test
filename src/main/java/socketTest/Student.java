@@ -32,7 +32,7 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "bean.Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';

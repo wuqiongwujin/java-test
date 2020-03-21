@@ -11,7 +11,7 @@ import java.io.*;
  */
 public class SerializableTest {
     public static void main(String[] args) {
-//        Student student = new Student();
+//        bean.Student student = new bean.Student();
 //        student.setName("无穷");
 //        student.setAge(25);
 //        student.setAddress("亚港");

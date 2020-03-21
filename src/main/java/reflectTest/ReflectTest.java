@@ -22,6 +22,20 @@ public class ReflectTest {
             field.set(circular, booleanT());
             System.out.println(field.get(circular));
         }
+        {
+            Field field = null;
+            try {
+                field = Circular.class.getDeclaredField("name");
+            } catch (Exception e) {
+
+            }
+            if (field == null) {
+                field = Circular.class.getSuperclass().getDeclaredField("name");
+            }
+            field.setAccessible(true);
+            field.set(circular, "Circular");
+            System.out.println(field.get(circular));
+        }
     }
 
     public static Object object() {

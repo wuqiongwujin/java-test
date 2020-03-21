@@ -1,3 +1,7 @@
+package bean;
+
+import bean.Animal;
+
 /**
  * @author Cain
  * @Package PACKAGE_NAME

@@ -1,3 +1,5 @@
+package bean;
+
 /**
  * @author Cain
  * @Package PACKAGE_NAME
@@ -6,6 +8,7 @@
  */
 public class Animal {
     private String type;
+    private String sqe;
 
     public Animal() {
 
@@ -17,6 +20,14 @@ public class Animal {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSqe() {
+        return sqe;
+    }
+
+    public void setSqe(String sqe) {
+        this.sqe = sqe;
     }
 
     @Override

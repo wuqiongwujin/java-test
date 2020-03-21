@@ -1,3 +1,5 @@
+package bean;
+
 /**
  * @author Cain
  * @Package PACKAGE_NAME
@@ -33,9 +35,9 @@ public class Student implements Study {
 
 //    @Override
 //    public int compareTo(Object o) {
-//        if(this.getAge() > ((Student)o).getAge()){
+//        if(this.getAge() > ((bean.Student)o).getAge()){
 //            return -1;
-//        }else if(this.getAge() < ((Student)o).getAge()){
+//        }else if(this.getAge() < ((bean.Student)o).getAge()){
 //            return 1;
 //        }
 //        return 0;
