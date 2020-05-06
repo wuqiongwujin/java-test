@@ -1,20 +1,14 @@
 package stream;
 
+import bean.Animal;
 import com.google.gson.Gson;
-import net.sf.cglib.core.Local;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StreamTest {
@@ -22,24 +16,56 @@ public class StreamTest {
     public static final int k = 4;
 
     public static void main(String[] args) throws Exception {
-        List<User> userList = new ArrayList<>();
-        User user = new User();
-        user.setId("1");
-        user.setName("wq");
-        user.setAge(10);
-        userList.add(user);
-        User user2 = new User();
-        user2.setId("2");
-        user2.setName("wq");
-        user2.setAge(11);
-        userList.add(user2);
-        List<User> newList = userList.stream().sorted((o1, o2) -> {
-            if (o1.getAge() > o2.getAge()) {
-                return 1;
-            } else {
-                return -1;
-            }}).collect(Collectors.toList());
-        System.out.println(new Gson().toJson(newList));
+        List<Animal> animalList = new ArrayList<>();
+        {
+            Animal animal = new Animal();
+            animal.setType("1");
+            animal.setSqe("1");
+            animalList.add(animal);
+        }
+        {
+            Animal animal = new Animal();
+            animal.setType("2");
+            animal.setSqe("2");
+            animalList.add(animal);
+        }
+        {
+            Animal animal = new Animal();
+            animal.setType("2");
+            animal.setSqe("3");
+            animalList.add(animal);
+        }
+        {
+            Animal animal = new Animal();
+            animal.setType("3");
+            animal.setSqe("4");
+            animalList.add(animal);
+        }
+        filterTest(animalList);
+    }
+
+    public static void mapTest() {
+
+    }
+
+    public static void sumTest() {
+        List<User> users = new ArrayList<>();
+        {
+            User user = new User();
+            user.setAge(1);
+            users.add(user);
+        }
+        {
+            User user = new User();
+            user.setAge(2);
+            users.add(user);
+        }
+	    System.out.println();
+    }
+
+    public static void filterTest(List<Animal> animalList) {
+        Map<String, Animal> filter = animalList.stream().filter(animal -> animal.getType().equals("2")).collect(Collectors.toMap(Animal::getSqe, animal -> animal));
+        System.out.println(new Gson().toJson(filter));
     }
 
     static class User {

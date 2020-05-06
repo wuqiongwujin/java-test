@@ -1,5 +1,8 @@
 package localDateTest;
 
+
+import com.google.gson.Gson;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -14,9 +17,8 @@ public class LocalDateTest {
 
 	public static void main(String[] args) {
 		long timestamp = (new Date()).getTime();
-		LocalDate localDate = Instant.ofEpochMilli(timestamp).atZone(ZoneOffset.ofHours(8)).toLocalDate();
-		System.out.println(localDate);
-		System.out.println(localDate.getMonth());
-		System.out.println(localDate.getDayOfMonth());
+		LocalDate localDate = LocalDate.now().plusMonths(-1);
+		Date date = Date.from(localDate.atStartOfDay(ZoneOffset.ofHours(8)).toInstant());
+		System.out.println(new Gson().toJson(date));
 	}
 }

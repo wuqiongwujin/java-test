@@ -3,6 +3,7 @@ package annotation.test;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 /**
  * @Description
@@ -38,8 +39,5 @@ public class AnnotationTest {
 
         MyTargetFiled f = AnnotationTest.class.getDeclaredField("name").getAnnotation(MyTargetFiled.class);
         System.out.println("属性注解值:"+f.value());
-
-
-
     }
 }

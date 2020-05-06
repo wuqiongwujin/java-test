@@ -1,4 +1,17 @@
-import java.util.Date;
+import bean.Animal;
+import com.google.gson.Gson;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.scripting.support.StandardScriptEvalException;
+import org.springframework.util.StringUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @Description
@@ -7,17 +20,11 @@ import java.util.Date;
  */
 public class Test {
 
-    public static void main(String[] args) {
-        int a = 1;
-        switch (a) {
-            case 0:
-                System.out.println(0);
-            case 1:
-                System.out.println(1);
-            case 2:{
-                System.out.println(2);
-            }
-        }
+    private static Log log = LogFactory.getLog(Test.class);
+
+    public static void main(String[] args) throws RuntimeException {
+        Map<String,String> map = new HashMap<>();
+        map.put("","");
     }
 
 }

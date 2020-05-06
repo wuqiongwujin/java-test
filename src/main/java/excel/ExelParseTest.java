@@ -1,13 +1,15 @@
 package excel;
 
 
-import jxl.Cell;
-import jxl.Sheet;
-import jxl.Workbook;
+import com.google.gson.Gson;
+import com.hupun.nr.crm.domain.customer.CustomerDTO;
+import org.springframework.http.ResponseEntity;
+import recharge.RechargeChargeStore;
+import recharge.RechargeRecordDO;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description excel解析
@@ -15,27 +17,36 @@ import java.io.FileNotFoundException;
  */
 public class ExelParseTest {
 
-    public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("/Users/wuqiong/Downloads/customUploadModel-new.xls");
+    private static int BATCH_IMPORT_LIMIT = 20;
+
+    public static void main(String[] args) {
+        try {
+            redFile();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void redFile() throws FileNotFoundException {
+        File file = new File("/Users/wuqiong/Downloads/linshishang2.xls");
         FileInputStream fileInputStream = new FileInputStream(file);
 
-        checkFile(file);
         String fileName = file.getName();
         String ext = fileName.substring(fileName.lastIndexOf("."));
         CustomerHandler handler = new CustomerHandler();
         switch (SpreadsheetFormatEnum.valueOfExtension(ext)) {
             case EXCEL03_EXTENSION: {
-                XlsParser parser = new XlsParser(100, handler);
+                XlsParser parser = new XlsParser(BATCH_IMPORT_LIMIT, handler);
                 parser.parseFile(fileInputStream);
                 break;
             }
             case EXCEL07_EXTENSION: {
-                XlsxParser parser = new XlsxParser(10000, handler);
+                XlsxParser parser = new XlsxParser(BATCH_IMPORT_LIMIT, handler);
                 parser.parseFile(fileInputStream);
                 break;
             }
             case SV_EXTENSION: {
-                CsvParser parser = new CsvParser(1000, handler);
+                CsvParser parser = new CsvParser(BATCH_IMPORT_LIMIT, handler);
                 parser.parseFile(fileInputStream);
                 break;
             }
@@ -43,34 +54,24 @@ public class ExelParseTest {
         }
     }
 
-    private static void checkFile(File file) throws RuntimeException {
-        Workbook wb = null;
-        try {
-            wb = Workbook.getWorkbook(new FileInputStream(file));
-        } catch (Exception e) {
-            throw new RuntimeException("读取文件出错");
-        }
-        Sheet sheet = wb.getSheet(0);
-        if (sheet == null) {
-            throw new RuntimeException("文件内容为空");
-        }
-        Cell[] firstRow = sheet.getRow(0);
-        if (firstRow == null || firstRow.length <= 0) {
-            throw new RuntimeException("文件格式错误");
-        }
-        StringBuffer stringBuffer = new StringBuffer();
-        for (int j = 0; j < firstRow.length; j++) {
-            Cell cell = firstRow[j];
-            String head = cell.getContents();
-            stringBuffer.append(head);
-        }
-        String firstRowCont = stringBuffer.toString();
-        System.out.println(firstRowCont);
-        if (true) {
-            if (!firstRowCont.contains("手机<手机或者卡号必填>")) {
-                throw new RuntimeException("文件格式不正确");
+    private static void wirte(String desc) {
+        File file = new File("/Users/wuqiong/Downloads/rechage.txt");
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } else {
         }
+        try {
+            FileOutputStream out = new FileOutputStream(file, true);
+            OutputStreamWriter osw = new OutputStreamWriter(out, "UTF-8");
+            osw.write("test1");
+            osw.write("\r\n");
+            osw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
