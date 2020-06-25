@@ -3,14 +3,12 @@ package annotation.test;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 
 /**
  * @Description
  * @date 2019/7/23
  */
-@MyTargetType("类注解新值")
-public class AnnotationTest {
+public class AnnotationTest implements MyAnnoInterface {
 
     @MyTargetFiled
     public String name = "姓名";
@@ -20,6 +18,11 @@ public class AnnotationTest {
     }
 
     public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException, InvocationTargetException, IllegalAccessException {
+        Class<?>[] interfaces = AnnotationTest.class.getInterfaces();
+        for (Class c : interfaces) {
+            Annotation annotation = c.getAnnotation(MyTargetType.class);
+            System.out.println(annotation.toString());
+        }
         // 获取类上的注解MyAnTargetType
         MyTargetType t = AnnotationTest.class.getAnnotation(MyTargetType.class);
         System.out.println("类注解值:" + t.value());

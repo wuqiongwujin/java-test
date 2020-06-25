@@ -1,30 +1,20 @@
-import bean.Animal;
-import com.google.gson.Gson;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.scripting.support.StandardScriptEvalException;
-import org.springframework.util.StringUtils;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @Description
  * @Author Cain
- * @date 2020/2/17
+ * @date 2020/5/11
  */
 public class Test {
 
-    private static Log log = LogFactory.getLog(Test.class);
+    static RestTemplate template = new RestTemplate();
 
-    public static void main(String[] args) throws RuntimeException {
-        Map<String,String> map = new HashMap<>();
-        map.put("","");
+    public static void main(String[] args) {
+        String url = "http://127.0.0.1:8091/user/getUser";
+        template.getForObject(url, User.class);
     }
 
+    static class User {
+
+    }
 }

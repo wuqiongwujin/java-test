@@ -5,24 +5,29 @@ import java.util.List;
 import java.util.concurrent.*;
 
 public class FiexdThreadPoolTest {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ExecutorService threadPool = Executors.newFixedThreadPool(10);
-        List<Future<Integer>> futureList = new ArrayList<Future<Integer>>();
-        for(int i=1;i<=10;i++){
-            futureList.add(threadPool.submit(new Callable<Integer>() {
-                public Integer call() throws Exception {
-                    return 1;
+    public static void main(String[] args)  {
+        MyFiexdThreadPool threadPool = new MyFiexdThreadPool(2, 100);
+        for (int i = 0; i<=2000000; i++) {
+            int finalI = i;
+            try {
+                threadPool.execute(() -> {
+                    Byte[] bytes = new Byte[1024 * 1000];
+                    Thread.currentThread().setName("线程"+ finalI);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName()+"运行结束");
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
                 }
-            }));
+            }
         }
-        int count = 0;
-        for(Future<Integer> future : futureList){
-            count += future.get();
-        }
-        if(threadPool != null && !threadPool.isShutdown()){
-            threadPool.awaitTermination(3, TimeUnit.SECONDS);
-        }
-//        threadPool.shutdown();
-        System.out.println(count);
     }
 }

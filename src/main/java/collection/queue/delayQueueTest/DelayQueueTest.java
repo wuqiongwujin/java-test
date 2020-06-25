@@ -20,7 +20,7 @@ public class DelayQueueTest {
             @Override
             public void run() {
                 for(int i=1; i<=studentNumber; i++){
-                    String studentName = "第名"+i+"学生";
+                    String studentName = "第"+i+"名学生";
                     long workingTime = random.nextInt(30);
                     Student student = new Student(studentName, workingTime, countDownLatch);
                     ((DelayQueue<Student>) studentQueue).put(student);
