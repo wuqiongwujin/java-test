@@ -1,5 +1,8 @@
 package threadPoolTest;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+
 /**
  * @Description
  * @Author Cain
@@ -18,11 +21,16 @@ public class MyFiexdThreadPool extends AbstractThreadPool {
      * @param blockingSize 阻塞队列大小
      */
     public MyFiexdThreadPool(int size, int blockingSize) {
-        super(size, blockingSize);
+        super(size, blockingSize, "测试");
     }
 
     @Override
     public void execute(Runnable command) {
         super.execute(command);
+    }
+
+    @Override
+    public Future submit(Callable task) {
+        return super.submit(task);
     }
 }

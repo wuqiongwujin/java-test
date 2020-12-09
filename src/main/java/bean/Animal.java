@@ -47,4 +47,9 @@ public class Animal {
         hash = 31 * hash + (type == null ? 0 : type.hashCode());
         return hash;
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
 }

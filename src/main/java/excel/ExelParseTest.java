@@ -1,15 +1,11 @@
 package excel;
 
 
-import com.google.gson.Gson;
-import com.hupun.nr.crm.domain.customer.CustomerDTO;
-import org.springframework.http.ResponseEntity;
-import recharge.RechargeChargeStore;
-import recharge.RechargeRecordDO;
+import excel.export.StatisticUseFunctionHandler;
+import excel.handler.amount.RechargeRecordHandler;
+import excel.handler.amount.UseAmountHandler;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Description excel解析
@@ -17,7 +13,7 @@ import java.util.Map;
  */
 public class ExelParseTest {
 
-    private static int BATCH_IMPORT_LIMIT = 20;
+    private static int BATCH_IMPORT_LIMIT = 2000;
 
     public static void main(String[] args) {
         try {
@@ -27,13 +23,21 @@ public class ExelParseTest {
         }
     }
 
+    /**
+     * 读取文件
+     * @throws FileNotFoundException
+     */
     private static void redFile() throws FileNotFoundException {
-        File file = new File("/Users/wuqiong/Downloads/linshishang2.xls");
+        File file = new File("/Users/wuqiong/Downloads/最终结果.xlsx");
         FileInputStream fileInputStream = new FileInputStream(file);
 
         String fileName = file.getName();
         String ext = fileName.substring(fileName.lastIndexOf("."));
-        CustomerHandler handler = new CustomerHandler();
+        //CustomerHandler handler = new CustomerHandler();
+        // 处理聚茂导入客户余额问题
+        //RechargeRecordHandler handler = new RechargeRecordHandler();
+        // 迁移公司功能使用情况导出
+        StatisticUseFunctionHandler handler = new StatisticUseFunctionHandler();
         switch (SpreadsheetFormatEnum.valueOfExtension(ext)) {
             case EXCEL03_EXTENSION: {
                 XlsParser parser = new XlsParser(BATCH_IMPORT_LIMIT, handler);
