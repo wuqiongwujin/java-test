@@ -1,10 +1,9 @@
-package jedis;
+package redis.jedis;
 
 import com.google.gson.Gson;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.dynamic.RedisCommandFactory;
-import redis.clients.jedis.Jedis;
 
 import java.util.List;
 

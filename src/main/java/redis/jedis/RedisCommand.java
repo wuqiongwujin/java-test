@@ -1,4 +1,4 @@
-package jedis;
+package redis.jedis;
 
 import io.lettuce.core.dynamic.Commands;
 import io.lettuce.core.dynamic.annotation.Command;

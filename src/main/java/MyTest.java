@@ -1,14 +1,14 @@
+import calenderTest.DateUtils;
 import com.google.gson.Gson;
-import com.hupun.scm.common.util.JsonConverter;
-import org.springframework.util.Assert;
+import com.google.gson.JsonElement;
+import com.hupun.calf.util.DateUtil;
+import com.hupun.nr.crm.domain.member.query.NRMemberQuery;
+import com.hupun.scm.common.util.UUIDGenerator;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 /**
  * @Description volatile修饰的变量与其他变量联合加入if判断会出现数据不安共享
@@ -17,9 +17,19 @@ import java.util.List;
  */
 public class MyTest {
 
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3));
-        System.out.println(list.stream().filter(i -> i>1).count());
+    public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        NRMemberQuery query = new NRMemberQuery();
+        query.setCompanyID("123");
+        query.setMobile("132");
+        query.setSourceIDs(Arrays.asList("A","B","C"));
+        JsonElement jsonElement = new Gson().toJsonTree(query);
+        Set<Map.Entry<String, JsonElement>> entrySet = jsonElement.getAsJsonObject().entrySet();
+        for (Map.Entry<String, JsonElement> entry : entrySet) {
+            String name = entry.getKey();
+            String params = new Gson().toJson(entry.getValue());
+            System.out.println("name:" + name +"\t,params:"+params);
+        }
     }
+
 
 }
