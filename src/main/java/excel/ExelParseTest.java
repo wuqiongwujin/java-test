@@ -3,6 +3,7 @@ package excel;
 
 import excel.export.CreateCrmDeleteSqlHandler;
 import excel.export.CreateDeleteSqlHandler;
+import excel.export.CreateUpdateGuestSqlHandler;
 import excel.export.StatisticUseFunctionHandler;
 import excel.handler.amount.RechargeRecordHandler;
 import excel.handler.amount.UseAmountHandler;
@@ -30,17 +31,14 @@ public class ExelParseTest {
      * @throws FileNotFoundException
      */
     private static void redFile() throws FileNotFoundException {
-        File file = new File("/Users/wuqiong/Downloads/crmCompanyID.xlsx");
+        File file = new File("/Users/wuqiong/Downloads/公司统计.xlsx");
         FileInputStream fileInputStream = new FileInputStream(file);
 
         String fileName = file.getName();
         String ext = fileName.substring(fileName.lastIndexOf("."));
-        //CustomerHandler handler = new CustomerHandler();
-        // 处理聚茂导入客户余额问题
-        //RechargeRecordHandler handler = new RechargeRecordHandler();
         // 迁移公司功能使用情况导出
-        //StatisticUseFunctionHandler handler = new StatisticUseFunctionHandler();
-        CreateCrmDeleteSqlHandler handler = new CreateCrmDeleteSqlHandler();
+        StatisticUseFunctionHandler handler = new StatisticUseFunctionHandler();
+        //CreateUpdateGuestSqlHandler handler = new CreateUpdateGuestSqlHandler();
         switch (SpreadsheetFormatEnum.valueOfExtension(ext)) {
             case EXCEL03_EXTENSION: {
                 XlsParser parser = new XlsParser(BATCH_IMPORT_LIMIT, handler);

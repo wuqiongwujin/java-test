@@ -2,13 +2,16 @@ package stream;
 
 import bean.Animal;
 import com.google.gson.Gson;
+import com.hupun.scm.common.util.JsonConverter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class StreamTest {
@@ -25,7 +28,7 @@ public class StreamTest {
         }
         {
             Animal animal = new Animal();
-            animal.setType("2");
+            animal.setType("1");
             animal.setSqe("2");
             animalList.add(animal);
         }
@@ -41,7 +44,8 @@ public class StreamTest {
             animal.setSqe("4");
             animalList.add(animal);
         }
-        filterTest(animalList);
+        Map<String,List<Animal>> map = animalList.stream().collect(Collectors.groupingBy(Animal::getType));
+        System.out.println(JsonConverter.toJSON(map));
     }
 
     public static void mapTest() {

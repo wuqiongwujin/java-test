@@ -3,12 +3,14 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.hupun.calf.util.DateUtil;
 import com.hupun.nr.crm.domain.member.query.NRMemberQuery;
+import com.hupun.scm.common.util.JsonConverter;
 import com.hupun.scm.common.util.UUIDGenerator;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Description volatile修饰的变量与其他变量联合加入if判断会出现数据不安共享
@@ -30,6 +32,5 @@ public class MyTest {
             System.out.println("name:" + name +"\t,params:"+params);
         }
     }
-
 
 }

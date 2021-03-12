@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description 生成更新会员卡数据sql（误迁移）
+ * @Description 创建更新散客sql处理器
  * @Author Cain
- * @date 2021/1/26
+ * @date 2021/2/10
  */
-public class CreateCrmDeleteSqlHandler extends AbstractSpreadsheetRowsHandler {
+public class CreateUpdateGuestSqlHandler extends AbstractSpreadsheetRowsHandler {
     @Override
     public void handleRows(Map<Integer, List<String>> rowsMap) {
         List<List<String>> dataList = new ArrayList<>();
@@ -24,11 +24,16 @@ public class CreateCrmDeleteSqlHandler extends AbstractSpreadsheetRowsHandler {
             String companyID = rows.get(0).trim();
             String db = rows.get(1).trim();
             if (StringUtils.isEmpty(companyID)) continue;
-            String cardCodeSql = "update "+db+".cus_card_code o inner join "+db+".custom c on o.com_uid=c.com_uid and o.cus_uid=c.unit_uid and o.com_uid='"+companyID+"' and o.card_type=1 set o.cus_uid=c.cus_uid;";
-            //String syncOldCrmRecordSql = "delete from "+db+".sync_old_crm_record where company_id='"+companyID+"';";
-            dataList.add(Arrays.asList(db,cardCodeSql));
+            String part = part(companyID);
+            String updateSrcSql = "delete from "+db+".mbr_custom"+part+" where `com_id` ='"+companyID+
+                    "' and `cus_id` in(select `cus_id`  from "+db+".mbr_cus_src"+part+" where `com_id` ='"+companyID+
+                    "' and src_type=-3 and src_val ='' and nick_val =0);";
+            String updateCustomSql = "delete from "+db+".mbr_cus_src"+part+" where `com_id` ='"+companyID+
+                    "' and src_type=-3 and src_val ='' and nick_val =0;";
+            dataList.add(Arrays.asList(db,updateSrcSql));
+            dataList.add(Arrays.asList(db,updateCustomSql));
         }
-        String filePatch = "/Users/wuqiong/Downloads/deleteCrmSql.xls";
+        String filePatch = "/Users/wuqiong/Downloads/deleteGuestSql2.xls";
         File file = new File(filePatch);
         OutputStream stream = null;
         try {
