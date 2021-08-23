@@ -38,6 +38,9 @@ public class Animal {
         if (!this.type.equals(((Animal)obj).type)) {
             return false;
         }
+        if (!this.sqe.equals(((Animal)obj).sqe)) {
+            return false;
+        }
         return true;
     }
 

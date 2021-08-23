@@ -7,6 +7,7 @@ import excel.export.CreateUpdateGuestSqlHandler;
 import excel.export.StatisticUseFunctionHandler;
 import excel.handler.amount.RechargeRecordHandler;
 import excel.handler.amount.UseAmountHandler;
+import excel.handler.blacklist.ImportBlacklistHandler;
 
 import java.io.*;
 
@@ -31,7 +32,7 @@ public class ExelParseTest {
      * @throws FileNotFoundException
      */
     private static void redFile() throws FileNotFoundException {
-        File file = new File("/Users/wuqiong/Downloads/公司统计.xlsx");
+        File file = new File("/Users/wuqiong/Downloads/会员信息导入模板.xls");
         FileInputStream fileInputStream = new FileInputStream(file);
 
         String fileName = file.getName();
@@ -39,6 +40,8 @@ public class ExelParseTest {
         // 迁移公司功能使用情况导出
         StatisticUseFunctionHandler handler = new StatisticUseFunctionHandler();
         //CreateUpdateGuestSqlHandler handler = new CreateUpdateGuestSqlHandler();
+        // 导入黑名单
+        //ImportBlacklistHandler handler = new ImportBlacklistHandler();
         switch (SpreadsheetFormatEnum.valueOfExtension(ext)) {
             case EXCEL03_EXTENSION: {
                 XlsParser parser = new XlsParser(BATCH_IMPORT_LIMIT, handler);
