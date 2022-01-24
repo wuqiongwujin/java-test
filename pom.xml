@@ -179,6 +179,15 @@
             <artifactId>curator-recipes</artifactId>
             <version>4.0.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.taobao.api</groupId>
+            <artifactId>taobao-sdk-java-auto</artifactId>
+            <version>1465275985048-20160607</version>
+        </dependency>
+        <dependency>
+            <groupId>com.taobao.api</groupId>
+            <artifactId>taobao-sdk-encryption-crm</artifactId>
+            <version>1630899994249-20210906</version>
+        </dependency>
     </dependencies>
 </project>

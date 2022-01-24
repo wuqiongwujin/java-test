@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class WeidianRegionImport {
 
-    private static final String HOST = "http://192.168.50.138:9215/";
+    private static final String HOST = "http://172.16.32.244:9215/";
     private static String QUERY_MODIFIED_URL = HOST + "/service/nr/crm/system/region/add/platformRegionCodeBatch";
     private static RestTemplate restTemplate = new RestTemplate();
 
