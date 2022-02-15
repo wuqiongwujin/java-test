@@ -18,6 +18,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.UnsupportedEncodingException;
@@ -28,6 +29,7 @@ import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -40,7 +42,12 @@ public class MyTest {
     private static RestTemplate restTemplate = new RestTemplate();
 
     public static void main(String[] args) throws Exception {
-        System.out.println(BigDecimal.valueOf(3.12).toString());
+        System.out.println(isOnlyContainsLetterOrNumber("1"));
+    }
+
+    protected static boolean isOnlyContainsLetterOrNumber(String s) {
+        if (StringUtils.isEmpty(s)) return false;
+        return Pattern.matches("[0-9|a-z]+", s);
     }
 
 }

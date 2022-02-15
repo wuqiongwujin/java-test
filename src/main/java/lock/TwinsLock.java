@@ -9,6 +9,21 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
  */
 public class TwinsLock {
 
+    public static TwinsLock twinsLock = new TwinsLock();
+
+    public static void main(String[] args) {
+        for (int i=1; i<=3; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    if (twinsLock.lock()) {
+                        System.out.println("获取锁成功");
+                    }
+                }
+            }).start();
+        }
+    }
+
     private Sync sync = new Sync(2);
 
     private class Sync extends AbstractQueuedSynchronizer {
